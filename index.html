@@ -1,0 +1,543 @@
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .animated-banner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    min-width: 1000px;
+    min-height: 155px;
+    height: 9.375vw;
+  }
+
+  .animated-banner>.layer {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div class="animated-banner">
+  <div class="layer"><img src="1.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="2.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="3.webp" data-height="187" data-width="2000" height="224" width="2400">
+  </div>
+  <div class="layer"><img src="4.webp" data-height="187" data-width="2000" height="205" width="2200">
+  </div>
+  <div class="layer"><img src="5.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="6.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="7.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="8.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="9.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="10.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="11.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="12.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="13.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="14.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="15.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="16.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="17.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="18.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="19.webp" data-height="187" data-width="2000" height="168" width="1800"></div>
+  <div class="layer"><img src="20.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><img src="21.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+  <div class="layer"><video loop muted src="1.webm" playsinline="" width="180" height="100" data-height="100"
+      data-width="180"></video></div>
+  <div class="layer"><img src="22.webp" data-height="187" data-width="2000" height="205" width="2200"></div>
+  <div class="layer"><img src="23.webp" data-height="187" data-width="2000" height="187" width="2000"></div>
+</div>
+
+<script>
+  const banner = document.querySelector('.animated-banner');
+  const bannerLeft = banner.offsetLeft;
+  const bannerWidth = banner.offsetWidth;
+  let initMouseLeft = 0;
+
+  const styleMap = {
+    0: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 0,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: null,
+      element: banner.querySelector('.layer:nth-child(1)').querySelector('img')
+    },
+    1: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 0,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'y',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(2)').querySelector('img')
+    },
+    2: {
+      initialStyle: {
+        height: '224.4px',
+        width: '2400px',
+        translateX: 300,
+        translateY: 24,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: null,
+      element: banner.querySelector('.layer:nth-child(3)').querySelector('img')
+    },
+    3: {
+      initialStyle: {
+        height: '205.7px',
+        width: '2200px',
+        translateX: 330,
+        translateY: 33,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 50
+      },
+      element: banner.querySelector('.layer:nth-child(4)').querySelector('img')
+    },
+    4: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: null,
+      element: banner.querySelector('.layer:nth-child(5)').querySelector('img')
+    },
+    5: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(6)').querySelector('img')
+    },
+    6: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(7)').querySelector('img')
+    },
+    7: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 2
+      },
+      element: banner.querySelector('.layer:nth-child(8)').querySelector('img')
+    },
+    8: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(9)').querySelector('img')
+    },
+    9: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: null,
+      element: banner.querySelector('.layer:nth-child(10)').querySelector('img')
+    },
+    10: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 50
+      },
+      element: banner.querySelector('.layer:nth-child(11)').querySelector('img')
+    },
+    11: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(12)').querySelector('img')
+    },
+    12: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 30
+      },
+      element: banner.querySelector('.layer:nth-child(13)').querySelector('img')
+    },
+    13: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 30
+      },
+      element: banner.querySelector('.layer:nth-child(14)').querySelector('img')
+    },
+    14: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: null,
+      element: banner.querySelector('.layer:nth-child(15)').querySelector('img')
+    },
+    15: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 20
+      },
+      element: banner.querySelector('.layer:nth-child(16)').querySelector('img')
+    },
+    16: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(17)').querySelector('img')
+    },
+    17: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: -100,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 20
+      },
+      element: banner.querySelector('.layer:nth-child(18)').querySelector('img')
+    },
+    18: {
+      initialStyle: {
+        height: '168.3px',
+        width: '1800px',
+        translateX: -90,
+        translateY: 0,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 400
+      },
+      element: banner.querySelector('.layer:nth-child(19)').querySelector('img')
+    },
+    19: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 0,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(20)').querySelector('img')
+    },
+    20: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 0,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 10
+      },
+      element: banner.querySelector('.layer:nth-child(21)').querySelector('img')
+    },
+    21: {
+      initialStyle: {
+        height: '100px',
+        width: '180px',
+        translateX: -245,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1,
+        objectFit: 'cover'
+      },
+      style: null,
+      element: banner.querySelector('.layer:nth-child(22)').querySelector('video')
+    },
+    22: {
+      initialStyle: {
+        height: '205.7px',
+        width: '2200px',
+        translateX: 0,
+        translateY: 0,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 200
+      },
+      element: banner.querySelector('.layer:nth-child(23)').querySelector('img')
+    },
+    23: {
+      initialStyle: {
+        height: '187px',
+        width: '2000px',
+        translateX: 0,
+        translateY: 15,
+        rotate: 0,
+        scale: 1,
+        opacity: 1
+      },
+      style: {
+        direction: 'x',
+        scale: 200
+      },
+      element: banner.querySelector('.layer:nth-child(24)').querySelector('img')
+    },
+  }
+
+  const init = () => {
+    Object.keys(styleMap).forEach(item => {
+      const current = styleMap[item];
+      const initStyle = current.initialStyle;
+      current.element.style = `height: ${initStyle.height}; width: ${initStyle.width}; transform: translate(${initStyle.translateX}px, ${initStyle.translateY}px) rotate(${initStyle.rotate}deg) scale(${initStyle.scale}); opacity: ${initStyle.opacity}; object-fit: ${initStyle.objectFit}`;
+    });
+  }
+
+  const playVideo = () => {
+    const video = document.querySelector('video');
+    video.play();
+  }
+
+  const touchListener = () => {
+    function calcutedPosition(mouseLeft, scale) {
+      return -(mouseLeft - initMouseLeft) * scale / bannerWidth;
+    }
+
+    function startListener() {
+      banner.addEventListener('mousemove', function (event) {
+        event.stopPropagation()
+        const mouseLeft = event.pageX - bannerLeft;
+        Object.keys(styleMap).forEach(item => {
+          const current = styleMap[item];
+          if (current.style) {
+            const initStyle = current.initialStyle;
+            const style = current.style;
+            const element = current.element;
+            // 计算偏移
+            const offset = calcutedPosition(mouseLeft, style.scale);
+            let styleResult = `height: ${initStyle.height}; width: ${initStyle.width}; opacity: ${initStyle.opacity}; object-fit: ${initStyle.objectFit};`;
+
+            if (style.direction === 'y') {
+              styleResult += `transform: translate(${initStyle.translateX}px, ${initStyle.translateY - offset}px) rotate(${initStyle.rotate}deg) scale(${initStyle.scale});`
+            } else {
+              styleResult += `transform: translate(${initStyle.translateX - offset}px, ${initStyle.translateY}px) rotate(${initStyle.rotate}deg) scale(${initStyle.scale});`
+            }
+            element.style = styleResult;
+          }
+        });
+      })
+    }
+
+    function clearListener() {
+      const mouseLeft = event.pageX - bannerLeft;
+
+      Object.keys(styleMap).forEach(item => {
+        const current = styleMap[item];
+        const style = current.style;
+        const initStyle = current.initialStyle;
+        const element = current.element;
+
+        if (current.style) {
+          // 计算偏移
+          const offset = calcutedPosition(mouseLeft, style.scale);
+  
+          let startValue = offset;
+          let endValue = 0;
+          let duration = 500; // 总时间，单位为毫秒
+          let interval = 50; // 每次更新的间隔时间，单位为毫秒
+          let steps = duration / interval; // 总步数
+          let stepValue = (startValue - endValue) / steps; // 每一步的值变化量
+  
+          let currentValue = startValue;
+          
+          let timer = setInterval(() => {
+            currentValue -= stepValue;
+            let styleResult = `height: ${initStyle.height}; width: ${initStyle.width}; opacity: ${initStyle.opacity}; object-fit: ${initStyle.objectFit};`;
+            
+            if (style.direction === 'y') {
+              styleResult += `transform: translate(${initStyle.translateX}px, ${initStyle.translateY - currentValue}px) rotate(${initStyle.rotate}deg) scale(${initStyle.scale});`
+            } else {
+              styleResult += `transform: translate(${initStyle.translateX - currentValue}px, ${initStyle.translateY}px) rotate(${initStyle.rotate}deg) scale(${initStyle.scale});`
+            }
+  
+            if (Math.abs(currentValue - endValue) < Math.abs(stepValue)) {
+              clearInterval(timer);
+              styleResult = `transform: translate(${initStyle.translateX}px, ${initStyle.translateY}px) rotate(${initStyle.rotate}deg) scale(${initStyle.scale});`;
+            }
+            element.style = styleResult;
+          }, interval);
+        }
+      });
+    }
+
+    banner.addEventListener('mouseenter', function (event) {
+      event.stopPropagation();
+      // 计算初始鼠标 x 位置
+      initMouseLeft = event.pageX - bannerLeft;
+      // 开始监听偏移量
+      startListener();
+    });
+
+    banner.addEventListener('mouseleave', function (event) {
+      event.stopPropagation();
+      // 还原
+      clearListener();
+    });
+  }
+
+  window.onload = function () {
+    init();
+    playVideo();
+    touchListener();
+  }
+</script>
